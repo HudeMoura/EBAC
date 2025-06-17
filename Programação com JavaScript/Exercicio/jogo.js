@@ -1,5 +1,5 @@
 var numeroEncontrado = 0;
-var tentativas = 5;
+var tentativas = 3;
 
 function recarregar() {
     numeroEncontrado = parseInt(Math.random() * 100);
@@ -7,8 +7,15 @@ function recarregar() {
     console.log(numeroEncontrado);
 }
 
+    
 function verificarNumero() {
     const comparar = document.getElementById("numero").value;
+
+    while( tentativas <= 0){
+        alert('Você excedeu suas tentativas'); 
+        tentativas--;
+        return;                              
+    }
 
     if (comparar > 100 || comparar < 0) 
         {
