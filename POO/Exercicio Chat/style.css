@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+input, button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
