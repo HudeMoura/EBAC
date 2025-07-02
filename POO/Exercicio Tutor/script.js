@@ -35,15 +35,23 @@ class Parquimetro {
   subtrai(valorPago, valorTempo) {
     return valorPago - valorTempo;
   }
+
+
 }
 
+
+
+
+
+
+
+
 function calcular() {
-  const valor = parseFloat(document.getElementById("valor").value);
-  const parquimetro = new Parquimetro(valor);
-  parquimetro.calcular();
+  let valorInserido = document.getElementById('valor').value;
+  const parquimetroNovo = new Parquimetro(valorInserido);
+  parquimetroNovo.calcular();
 }
 
 function limpar() {
-  document.getElementById("valor").value = "";
-  document.getElementById("resultado").textContent = "";
+  document.getElementById('valor').value = '';
 }
