@@ -43,6 +43,19 @@ cadastroFormulario.addEventListener('submit', (evento) => {
     }
 
     localStorage.setItem('residencia', JSON.stringify(dadosEndereco));
-
-    console.log('Salvo no localStorage:', dadosEndereco);
 })
+
+window.addEventListener('DOMContentLoaded', () => {
+  const dadosSalvos = localStorage.getItem('residencia');
+
+  if (dadosSalvos) {
+    const residencia = JSON.parse(dadosSalvos);
+
+    document.getElementById('cep').value = residencia.cepInformado || '';
+    document.getElementById('logradouro').value = residencia.logradouroInformado || '';
+    document.getElementById('bairro').value = residencia.bairroInformado || '';
+    document.getElementById('cidade').value = residencia.cidadeInformado || '';
+    document.getElementById('estado').value = residencia.estadoInformado || '';
+    document.getElementById('numero').value = residencia.numeroInformado || '';
+  }
+});
