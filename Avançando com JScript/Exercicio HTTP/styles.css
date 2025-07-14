@@ -1,0 +1,76 @@
+/* CSS Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #10001F;
+    background-color: #f9f9f9;
+}
+
+/* Main */
+
+h2 {
+    font-size: 30px;
+    margin-top: 100px;
+    text-align: center;
+    color: #605f61;
+}
+
+/* Form */
+
+form {
+    padding: 20px;
+    margin: 80px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    width: 500px;
+    color: #838285;
+}
+
+ul {
+    margin: 80px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    width: 500px;
+    color: #838285;
+}
+/* Button */
+
+button {
+    padding: 3px;
+    border-radius: 5px;
+    border-color: #f9f9f9;
+    color: #f77150;
+}
+
+button:hover {
+    color: #1fbbc7;
+}
+
+
+/* Footer */
+footer {
+    color: #838285;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: #f77150;
+}
+
+footer a:hover {
+    color: #1fbbc7;
+    text-decoration: underline;
+}
