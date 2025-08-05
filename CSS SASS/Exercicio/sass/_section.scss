@@ -1,0 +1,22 @@
+@use 'variaveis';
+
+.selecao {
+    width: 60%;
+    padding: variaveis.$espacamento-padrao;
+    margin: 15px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #e4e3e7;
+
+    &__h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    &__sobreNos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

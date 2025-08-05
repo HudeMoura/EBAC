@@ -1,0 +1,16 @@
+@use 'variaveis';
+
+.container {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #10001F;
+    background-color: variaveis.$back-segundaria;
+    @media (max-width: 600px) {
+    }
+    @media (max-width: 601px) {
+    }
+    @media (max-width: 901px) {
+    }
+}

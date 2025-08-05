@@ -1,0 +1,11 @@
+@use 'variaveis';
+@use 'mixins';
+
+footer {
+    @include mixins.espacamento-padrao;
+    background-color: #5f5c5c;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #eae8ec;
+}
