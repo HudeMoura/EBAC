@@ -1,5 +1,38 @@
-import { useState } from "react";
-import './Tarefa.css'
+import { useState, memo } from "react";
+import styled from 'styled-components';
+import styles from './Tarefa.module.css';
+
+const Item = styled.li`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+`;
+
+const Botao = styled.button`
+    padding: 10px 16px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    
+
+`;
+
+const BotaoAlerta = styled(Botao)`
+    background-color: #f44336;
+
+    &:hover {
+        background-color: #d32f2f;
+    }
+`;
+
+const TextoItem = styled.span`
+    text-decoration:  ${({concluida}) => (concluida ? "line-through" : "none")};
+    color: ${({concluida}) => (concluida ? "#999" : "#000")};
+`;
+
 
 function Tarefa({texto}) {
 
@@ -10,7 +43,11 @@ function Tarefa({texto}) {
     }
 
     return(
-        <li><input type="checkbox" onChange={alternarConcluida}/> <span className={concluida ? 'concluida' : '' }>{texto}</span> <button>Remover</button></li>
+        <Item>
+            <input type="checkbox" onChange={alternarConcluida}/> 
+            <TextoItem concluida={concluida}>{texto}</TextoItem>
+            <BotaoAlerta>Remover</BotaoAlerta>
+        </Item>
     )
 }
 

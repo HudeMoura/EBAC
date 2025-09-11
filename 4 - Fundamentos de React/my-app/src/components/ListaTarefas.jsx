@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Tarefa from "./Tarefa"
 import { useInput } from "../hooks/useInput";
 import { UserContext } from "../contexts/UserContext";
+import styles from './ListaTarefas.module.css'
 
 const API_URL = 'https://crudcrud.com/api/908189f87e9744e799081b82a1f9d6c6/tarefas';
 
@@ -46,14 +47,14 @@ function ListaTarefas() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Digite uma nova tarefa" 
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input className={styles.input} type="text" placeholder="Digite uma nova tarefa" 
           value={tarefa.valor}
           onChange={tarefa.onChange}
         />
-        <button type="submit">Adicionar</button>
+        <button className={styles.button} type="submit">Adicionar</button>
       </form>
-      <ul>
+      <ul className={styles.list}>
         {tarefas
           .filter(tarefa => tarefa.usuario === usuario.nome)
         .map(tarefa => <Tarefa key={tarefa._id} texto={tarefa.texto}/>)}
