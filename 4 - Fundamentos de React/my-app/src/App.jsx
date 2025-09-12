@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react"
-import ListaTarefas from "./components/ListaTarefas"
+import ListaTarefas from "./components/ListaTarefas";
 import Login from "./components/Login";
-import { UserContext } from "./contexts/UserContext";
-import styles from './App.module.css'
+import { useRecoilValue } from 'recoil';
+import userState from "./state/user";
+import { tarefasCountSelector } from "./state/tarefas";
 
 function App() {
 
-  const [usuario, setUsuario] = useState ({nome: null, estaLogado: false});
-
+  const usuario = useRecoilValue(userState);
+  const tarefasCount = useRecoilValue(tarefasCountSelector);
 
   return (
-    <UserContext.Provider value={{usuario, setUsuario}}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>{usuario.nome}'s List App</h1>
+      <main>
+        <h1>{usuario.nome}'s List App({tarefasCount})</h1>
         {usuario.estaLogado ? <ListaTarefas/> : <Login/>}
-        
       </main>
-    </UserContext.Provider>
   )
 }
 

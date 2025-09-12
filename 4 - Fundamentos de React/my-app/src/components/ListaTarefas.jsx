@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from "react"
 import Tarefa from "./Tarefa"
 import { useInput } from "../hooks/useInput";
-import { UserContext } from "../contexts/UserContext";
 import styles from './ListaTarefas.module.css'
+import { useRecoilState, useRecoilValue } from "recoil";
+import userState from "../state/user";
+import { tarefasState } from "../state/tarefas";
 
 const API_URL = 'https://crudcrud.com/api/908189f87e9744e799081b82a1f9d6c6/tarefas';
 
 function ListaTarefas() {
 
-  const [tarefas, setTarefas] = useState([]);
+  const [tarefas, setTarefas] = useRecoilState(tarefasState);
   const tarefa = useInput();
-  const {usuario} = useContext(UserContext);
+  const usuario = useRecoilValue(userState);
 
   // Buscar os dados na API quando o componente for montado
   useEffect(() => {

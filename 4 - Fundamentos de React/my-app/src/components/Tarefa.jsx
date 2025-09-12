@@ -1,6 +1,5 @@
 import { useState, memo } from "react";
 import styled from 'styled-components';
-import styles from './Tarefa.module.css';
 
 const Item = styled.li`
     display: flex;
@@ -29,8 +28,8 @@ const BotaoAlerta = styled(Botao)`
 `;
 
 const TextoItem = styled.span`
-    text-decoration:  ${({concluida}) => (concluida ? "line-through" : "none")};
-    color: ${({concluida}) => (concluida ? "#999" : "#000")};
+    text-decoration:  ${({$concluida}) => ($concluida ? "line-through" : "none")};
+    color: ${({$concluida}) => ($concluida ? "#999" : "#000")};
 `;
 
 
@@ -45,7 +44,7 @@ function Tarefa({texto}) {
     return(
         <Item>
             <input type="checkbox" onChange={alternarConcluida}/> 
-            <TextoItem concluida={concluida}>{texto}</TextoItem>
+            <TextoItem $concluida={concluida}>{texto}</TextoItem>
             <BotaoAlerta>Remover</BotaoAlerta>
         </Item>
     )

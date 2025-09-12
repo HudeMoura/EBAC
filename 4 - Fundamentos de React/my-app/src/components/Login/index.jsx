@@ -1,12 +1,13 @@
-import { useContext } from "react";
 import { useInput } from "../../hooks/useInput";
-import { UserContext } from "../../contexts/UserContext";
 import { Form, Input, Botao } from "./styles"
+import { useResetRecoilState } from "recoil";
+import userState from "../../state/user";
 
 
 function Login() {
     const nomeDoUsuario = useInput();
-    const {setUsuario} = useContext(UserContext);
+
+    const setUsuario = useResetRecoilState(userState);
 
     const handleLogin = (e) => {
         e.preventDefault();
