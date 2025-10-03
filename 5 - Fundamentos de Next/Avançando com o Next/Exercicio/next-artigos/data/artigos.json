@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "Como iniciar com Next.js",
+    "author": "Felipe Moura",
+    "date": "2025-09-01",
+    "content": "Next.js é um framework React para produção que simplifica SSR e SSG..."
+  },
+  {
+    "id": "2",
+    "title": "Boas práticas em App Router",
+    "author": "Felipe Moura",
+    "date": "2025-08-20",
+    "content": "O App Router traz Server Components por padrão e facilita SEO dinâmico..."
+  }
+]
