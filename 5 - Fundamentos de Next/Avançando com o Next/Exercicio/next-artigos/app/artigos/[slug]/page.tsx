@@ -7,24 +7,7 @@ type PageProps = {
   };
 };
 
-// 🔹 Metadata dinâmica
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const artigo = artigos.find((a) => a.slug === params.slug);
-
-  if (!artigo) {
-    return {
-      title: "Artigo não encontrado",
-      description: "O artigo solicitado não foi encontrado",
-    };
-  }
-
-  return {
-    title: artigo.titulo,
-    description: artigo.conteudo.slice(0, 100) + "...",
-  };
-}
-
-// 🔹 Página
+// Página dinâmica
 export default async function ArtigoPage({ params }: PageProps) {
   const artigo = artigos.find((a) => a.slug === params.slug);
 
@@ -37,16 +20,28 @@ export default async function ArtigoPage({ params }: PageProps) {
       <h1>{artigo.titulo}</h1>
       <p><strong>Autor:</strong> {artigo.autor}</p>
       <p><strong>Publicado em:</strong> {artigo.data}</p>
-      <div>
-        <p>{artigo.conteudo}</p>
-      </div>
+      <div>{artigo.conteudo}</div>
     </article>
   );
 }
 
-// 🔹 SSG (gera as páginas estáticas no build)
+// Gerar rotas estáticas
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return artigos.map((a) => ({
     slug: a.slug,
   }));
+}
+
+// SEO dinâmico
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const artigo = artigos.find((a) => a.slug === params.slug);
+
+  return {
+    title: artigo ? artigo.titulo : "Artigo não encontrado",
+    description: artigo
+      ? artigo.conteudo.substring(0, 150)
+      : "Nenhum artigo disponível",
+  };
 }
