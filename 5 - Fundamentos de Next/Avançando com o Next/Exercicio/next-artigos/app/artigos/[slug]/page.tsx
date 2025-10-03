@@ -1,40 +1,52 @@
-import { notFound } from 'next/navigation';
-import slugify from 'slugify';
-import artigos from '../../../data/artigos.json';
+import { Metadata } from "next";
+import artigos from "@/data/artigos.json";
 
-interface Params {
-  params: { slug: string };
-}
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
-export const dynamic = 'force-static';
+// 🔹 Metadata dinâmica
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const artigo = artigos.find((a) => a.slug === params.slug);
 
-export async function generateStaticParams() {
-  return artigos.map((a) => ({ slug: slugify(a.title, { lower: true }) }));
-}
-
-export async function generateMetadata({ params }: Params) {
-  const artigo = artigos.find(a => slugify(a.title, { lower: true }) === params.slug);
-  if (!artigo) return { title: 'Artigo não encontrado', description: 'Artigo inexistente' };
+  if (!artigo) {
+    return {
+      title: "Artigo não encontrado",
+      description: "O artigo solicitado não foi encontrado",
+    };
+  }
 
   return {
-    title: artigo.title,
-    description: `${artigo.title} — por ${artigo.author}`
+    title: artigo.titulo,
+    description: artigo.conteudo.slice(0, 100) + "...",
   };
 }
 
-export default async function ArtigoPage({ params }: Params) {
-  const artigo = artigos.find(a => slugify(a.title, { lower: true }) === params.slug);
-  if (!artigo) return notFound();
+// 🔹 Página
+export default async function ArtigoPage({ params }: PageProps) {
+  const artigo = artigos.find((a) => a.slug === params.slug);
+
+  if (!artigo) {
+    return <h1>Artigo não encontrado</h1>;
+  }
 
   return (
-    <article style={{ padding: 24 }}>
-      <h1>{artigo.title}</h1>
-      <div style={{ fontSize: 14, color: '#666' }}>
-        {artigo.author} — {artigo.date}
+    <article>
+      <h1>{artigo.titulo}</h1>
+      <p><strong>Autor:</strong> {artigo.autor}</p>
+      <p><strong>Publicado em:</strong> {artigo.data}</p>
+      <div>
+        <p>{artigo.conteudo}</p>
       </div>
-      <section style={{ marginTop: 16 }}>
-        <p>{artigo.content}</p>
-      </section>
     </article>
   );
+}
+
+// 🔹 SSG (gera as páginas estáticas no build)
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  return artigos.map((a) => ({
+    slug: a.slug,
+  }));
 }
