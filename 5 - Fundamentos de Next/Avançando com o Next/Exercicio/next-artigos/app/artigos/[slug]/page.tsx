@@ -2,14 +2,13 @@ import { Metadata } from "next";
 import artigos from "@/data/artigos.json";
 
 type PageProps = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string}>;
 };
 
 // Página dinâmica
 export default async function ArtigoPage({ params }: PageProps) {
-  const artigo = artigos.find((a) => a.slug === params.slug);
+  const { slug } = await params;
+  const artigo = artigos.find((a) => a.slug === slug);
 
   if (!artigo) {
     return <h1>Artigo não encontrado</h1>;
@@ -27,16 +26,13 @@ export default async function ArtigoPage({ params }: PageProps) {
 
 // Gerar rotas estáticas
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  return artigos.map((a) => ({
-    slug: a.slug,
-  }));
+  return artigos.map((a) => ({ slug: a.slug }));
 }
 
 // SEO dinâmico
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const artigo = artigos.find((a) => a.slug === params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const artigo = artigos.find((a) => a.slug === slug);
 
   return {
     title: artigo ? artigo.titulo : "Artigo não encontrado",
