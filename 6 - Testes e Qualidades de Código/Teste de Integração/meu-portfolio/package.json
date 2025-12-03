@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://HudeMoura.github.io/meu-portfolio",
+  "homepage": "https://hudemoura.github.io/meu-portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
