@@ -8,12 +8,7 @@ on:
 
 jobs:
   ci:
-    name: Lint, Test and Build
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: "7 - Fundamentos de Cloud e DevOps/Pipeline/next-ci-cd-challenge"
 
     steps:
       - name: Checkout do código
@@ -24,8 +19,6 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: |
-            7 - Fundamentos de Cloud e DevOps/Pipeline/next-ci-cd-challenge/package-lock.json
 
       - name: Instalar dependências
         run: npm ci
