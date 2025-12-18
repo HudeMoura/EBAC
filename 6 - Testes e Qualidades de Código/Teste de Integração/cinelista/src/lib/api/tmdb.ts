@@ -7,7 +7,7 @@ type Data = {
 
 export const getTrendindMovies = async () => {
 
-    const res = await tmdbApi.get<Data>("/trending/movie/week?language=pt-BR")
+    const res = await tmdbApi.get<Data>(`/trending/movie/week?language=pt-BR`)
 
     return res.data.results;
 }
@@ -21,21 +21,21 @@ export const getMoviesDetails = async (id : number) : Promise<Filme | undefined>
 
 export const getNowPlaying = async () => {
 
-    const res = await tmdbApi.get<Data>("/movie/now_playing?language=pt-BR")
+    const res = await tmdbApi.get<Data>(`/movie/now_playing?language=pt-BR`)
 
     return res.data.results;
 }
 
 export const getPopularMovies = async () => {
 
-    const res = await tmdbApi.get<Data>("/movie/now_playing?language=pt-BR")
+    const res = await tmdbApi.get<Data>(`/movie/now_playing?language=pt-BR`)
 
     return res.data.results;
 }
 
 export const getTopMovies = async () => {
 
-    const res = await tmdbApi.get<Data>("/movie/now_playing?language=pt-BR")
+    const res = await tmdbApi.get<Data>(`/movie/now_playing?language=pt-BR`)
 
     return res.data.results;
 }
