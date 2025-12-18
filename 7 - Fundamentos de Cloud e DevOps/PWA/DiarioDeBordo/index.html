@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diário de Bordo</title>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2563eb" />
+</head>
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <h1>Diário de Bordo</h1>
+      <p>Registre suas atividades diárias</p>
+      <button class="header__install-button button">Instalar app</button>
+    </header>
+
+    <form id="form-atividade" class="form-section">
+      <input
+        type="text"
+        id="titulo"
+        placeholder="Título da atividade"
+        required
+      />
+
+      <textarea
+        id="descricao"
+        placeholder="Descrição da atividade"
+        required
+      ></textarea>
+
+      <button type="submit">Salvar atividade</button>
+    </form>
+
+    <section class="list-section">
+      <h2>Atividades registradas</h2>
+      <ul id="lista-atividades"></ul>
+    </section>
+
+    <footer class="footer">
+      <p>Funciona offline • PWA</p>
+    </footer>
+
+  </main>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
