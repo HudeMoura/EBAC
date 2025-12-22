@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetShop</title>
+  <link href="./src/output.css" rel="stylesheet">
+</head>
+<body class="font-sans text-gray-800">
+  <header class="bg-yellow-300 shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl font-bold text-gray-800">🐾 PetShop</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 font-medium">
+        <a href="#hero" class="hover:text-gray-700">Início</a>
+        <a href="#produtos" class="hover:text-gray-700">Produtos</a>
+        <a href="#depoimentos" class="hover:text-gray-700">Depoimentos</a>
+        <a href="#contato" class="hover:text-gray-700">Contato</a>
+      </nav>
+    </div>
+  </header>
+  <section id="hero" class="bg-yellow-100">
+    <div class="container mx-auto flex flex-col md:flex-row items-center p-6 md:py-16">
+      <div class="md:w-1/2 text-center md:text-left space-y-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800">
+          Tudo para seu pet em um só lugar!
+        </h1>
+        <p class="text-lg text-gray-700">
+          Camas, brinquedos, acessórios e muito mais para o bem-estar do seu melhor amigo.
+        </p>
+        <a href="#produtos" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+          Ver Produtos
+        </a>
+      </div>
+      <div class="md:w-1/2 mt-6 md:mt-0">
+        <img src="imgs/petlogo.jpg" loading="lazy" alt="Imagem Pet" class="rounded-lg shadow-lg mx-auto h-dvh">
+      </div>
+    </div>
+  </section>
+  <section id="produtos" class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Nossos Produtos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-yellow-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <img src="imgs/cama.jpg" loading="lazy" alt="Caminha" class="rounded mb-4 mx-auto">
+          <h3 class="text-lg font-semibold">Caminha Confortável</h3>
+          <p class="text-sm text-gray-600">Ideal para um sono tranquilo do seu pet.</p>
+        </div>
+        <div class="bg-yellow-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <img src="imgs/brinquedo.jpg" loading="lazy" alt="Brinquedo" class="rounded mb-4 mx-auto">
+          <h3 class="text-lg font-semibold">Brinquedo Mordedor</h3>
+          <p class="text-sm text-gray-600">Diversão garantida para seu amigo.</p>
+        </div>
+        <div class="bg-yellow-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <img src="imgs/coleira.jpg" loading="lazy" alt="Coleira" class="rounded mb-4 mx-auto">
+          <h3 class="text-lg font-semibold">Coleira Estilosa</h3>
+          <p class="text-sm text-gray-600">Segurança e charme para passeios.</p>
+        </div>
+        <div class="bg-yellow-50 p-4 rounded-lg shadow hover:shadow-lg transition">
+          <img src="imgs/comedouro.jpg" loading="lazy" alt="Comedouro" class="rounded mb-4 mx-auto">
+          <h3 class="text-lg font-semibold">Comedouro Antiderrapante</h3>
+          <p class="text-sm text-gray-600">Praticidade na hora das refeições.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="depoimentos" class="py-12 bg-yellow-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">O que nossos clientes dizem</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <blockquote class="bg-white p-4 rounded shadow">
+          "Meu cachorro amou a caminha, super confortável!" – <strong>Ana</strong>
+        </blockquote>
+        <blockquote class="bg-white p-4 rounded shadow">
+          "Atendimento ótimo e entrega rápida!" – <strong>Carlos</strong>
+        </blockquote>
+        <blockquote class="bg-white p-4 rounded shadow">
+          "Os brinquedos são de excelente qualidade!" – <strong>Juliana</strong>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+  <section id="contato" class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Entre em Contato</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-2">
+          <p><strong>Email:</strong> contato@petshop.com</p>
+          <p><strong>Telefone:</strong> (47) 1234-5678</p>
+        </div>
+        <form class="bg-yellow-50 p-6 rounded-lg shadow space-y-4">
+          <input type="text" placeholder="Seu nome" class="w-full p-2 border rounded">
+          <input type="email" placeholder="Seu e-mail" class="w-full p-2 border rounded">
+          <textarea placeholder="Sua mensagem" class="w-full p-2 border rounded"></textarea>
+          <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-yellow-300 text-center p-4 mt-8">
+    <p class="text-sm">© 2025 Felipe Moura. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
