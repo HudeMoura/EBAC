@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2563eb" />
+  <link rel="icon" href="./icons/icon-192.png" />
 </head>
 <body>
 
@@ -15,7 +16,13 @@
     <header class="header">
       <h1>Diário de Bordo</h1>
       <p>Registre suas atividades diárias</p>
-      <button class="header__install-button button">Instalar app</button>
+      <button
+        class="header__install-button button"
+        id="installBtn"
+        hidden
+      >
+      Instalar app
+    </button>
     </header>
 
     <form id="form-atividade" class="form-section">

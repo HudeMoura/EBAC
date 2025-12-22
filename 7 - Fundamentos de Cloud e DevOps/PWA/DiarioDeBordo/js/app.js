@@ -67,21 +67,25 @@ botaoInstalar.addEventListener("click", (e) => {
   })
 })
 
+const installBtn = document.getElementById('installBtn');
+
 window.addEventListener('beforeinstallprompt', event => {
   event.preventDefault();
   deferredPrompt = event;
 
-  const btn = document.createElement('button');
-  btn.textContent = 'Instalar aplicativo';
+  installBtn.hidden = false;
 
-  btn.onclick = async () => {
+  installBtn.addEventListener('click', async () => {
+    installBtn.hidden = true;
     deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    btn.remove();
-  };
 
-  document.body.appendChild(btn);
+    const { outcome } = await deferredPrompt.userChoice;
+    console.log('Resultado da instalação:', outcome);
+
+    deferredPrompt = null;
+  });
 });
+
 
 // Service Worker
 if ('serviceWorker' in navigator) {
