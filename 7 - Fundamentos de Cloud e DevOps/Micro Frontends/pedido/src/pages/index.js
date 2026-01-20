@@ -1,9 +1,5 @@
-import Pedido from "@/components/Pedido";
+import Pedido from '../components/Pedido';
 
 export default function Home() {
-  return (
-    <>
-      <Pedido/>
-    </>
-  )
+  return <Pedido />;
 }

@@ -1,14 +1,21 @@
+import dynamic from 'next/dynamic';
 
-import dynamic from "next/dynamic";
+const Cardapio = dynamic(() => import('cardapio/Cardapio'), {
+  ssr: false,
+});
 
-const Cardapio = dynamic(() => import("cardapio/Cardapio"), {ssr:false});
-const Pedido = dynamic(() => import("pedido/Pedido"), {ssr:false});
+const Pedido = dynamic(() => import('pedido/Pedido'), {
+  ssr: false,
+});
+
 export default function Home() {
   return (
-    <>
-    <h1>Micro Frontends - Container</h1>
-    <Cardapio/>
-    <Pedido/>
-    </>
-  )
+    <div>
+      <h1>Container App</h1>
+
+      <Cardapio />
+      <hr />
+      <Pedido />
+    </div>
+  );
 }

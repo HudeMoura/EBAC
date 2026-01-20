@@ -1,9 +1,5 @@
-import Cardapio from "@/components/Cardapio";
+import Cardapio from '../components/Cardapio';
 
 export default function Home() {
-  return (
-    <>
-      <Cardapio/>
-    </>
-  )
+  return <Cardapio />;
 }
