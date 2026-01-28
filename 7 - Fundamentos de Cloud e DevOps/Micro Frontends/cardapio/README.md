@@ -1,40 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+Micro Frontends com Next.js e Module Federation
 
-## Getting Started
+Este projeto demonstra a implementação de uma arquitetura de Micro Frontends utilizando Next.js, React e Webpack Module Federation.
 
-First, run the development server:
+O sistema é dividido em três aplicações independentes que se comunicam entre si por meio de eventos globais, simulando um fluxo real de composição de micros em um container principal.
 
-```bash
+📦 Estrutura do Projeto
+
+O repositório está organizado como um monorepo, contendo três aplicações distintas:
+
+micro-frontends/
+├── container/   # Aplicação principal (host)
+├── cardapio/    # Micro frontend de listagem de produtos
+└── pedido/      # Micro frontend de exibição do pedido
+
+Descrição dos Micros
+
+Container
+
+Aplicação principal
+
+Responsável por importar e renderizar os micro frontends
+
+Não contém regras de negócio específicas
+
+Micro Cardápio
+
+Exibe uma lista de produtos disponíveis
+
+Cada item possui nome, descrição e botão de ação
+
+Dispara eventos globais ao adicionar um item ao pedido
+
+Micro Pedido
+
+Escuta eventos globais
+
+Exibe dinamicamente os itens adicionados ao pedido
+
+🧠 Arquitetura e Decisões Técnicas
+Micro Frontends
+
+Cada micro frontend é um projeto independente
+
+Integração realizada via Webpack Module Federation
+
+O container atua como host, consumindo os micros remotamente
+
+Comunicação entre Micros
+
+A comunicação é feita através de eventos globais do browser, conforme sugerido no enunciado da tarefa:
+
+window.dispatchEvent(new CustomEvent('pedido:add', { detail: item }));
+
+window.addEventListener('pedido:add', handler);
+
+
+Essa abordagem mantém os micros desacoplados, sem dependência direta entre eles.
+
+SSR desativado para Micros
+
+Os micro frontends são carregados exclusivamente no client-side:
+
+dynamic(() => import('micro/App'), { ssr: false });
+
+
+Isso evita conflitos de runtime com o Module Federation e garante o correto funcionamento dos hooks do React.
+
+🛠 Tecnologias Utilizadas
+
+React 18
+
+Next.js 14
+
+Webpack Module Federation
+
+JavaScript (ES6+)
+
+nextjs-mf
+
+Não foi utilizado TypeScript conforme especificado no escopo da tarefa.
+
+▶️ Como Rodar o Projeto
+Pré-requisitos
+
+Node.js 18 LTS
+
+npm ou yarn
+
+Passo a passo
+
+Instale as dependências em cada aplicação:
+
+cd cardapio
+npm install
+
+cd ../pedido
+npm install
+
+cd ../container
+npm install
+
+
+Inicie os micros nesta ordem:
+
+# Terminal 1
+cd cardapio
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Terminal 2
+cd pedido
+npm run dev
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Terminal 3
+cd container
+npm run dev
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+Acesse no navegador:
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000
 
-## Learn More
+🔄 Fluxo de Funcionamento
 
-To learn more about Next.js, take a look at the following resources:
+O Container carrega os micros Cardápio e Pedido
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+O usuário adiciona um item no Cardápio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Um evento global é disparado
 
-## Deploy on Vercel
+O micro Pedido escuta o evento e atualiza a lista de itens
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📌 Observações Importantes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Todos os projetos utilizam a mesma versão de React e Next.js
+
+Os micros podem ser executados de forma isolada
+
+O projeto prioriza clareza arquitetural e desacoplamento
+
+🚀 Possíveis Evoluções
+
+Uso de um Event Bus dedicado
+
+Compartilhamento de estado via Context externo
+
+Implementação de Error Boundaries no container
+
+Estilização unificada entre micros
+
+👤 Autor
+
+Projeto desenvolvido como exercício prático de arquitetura de Micro Frontends com foco em boas práticas e integração entre aplicações independentes.
+
+🏁 Conclusão
+
+Este projeto demonstra, de forma prática, como micro frontends podem ser organizados, integrados e comunicados utilizando ferramentas modernas do ecossistema React e Next.js, respeitando princípios de desacoplamento e escalabilidade.

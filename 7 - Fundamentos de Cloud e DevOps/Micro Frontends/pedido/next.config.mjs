@@ -1,34 +1,24 @@
 import { NextFederationPlugin } from '@module-federation/nextjs-mf';
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack(config, options) {
-    const { isServer } = options;
-
+  reactStrictMode: true,
+  webpack(config) {
     config.plugins.push(
       new NextFederationPlugin({
         name: 'pedido',
-        filename: 'static/chunks/remoteEntry.js',
+        filename: 'static/chunks/remoteEntry.js', // ✅ obrigatório
         exposes: {
-          './Pedido': './src/components/Pedido.jsx',
+          './App': './src/RemoteApp.jsx',
         },
         shared: {
-          react: {
-            singleton: true,
-            requiredVersion: false,
-          },
-          'react-dom': {
-            singleton: true,
-            requiredVersion: false,
-          },
+          react: { singleton: true, requiredVersion: false, eager: true },
+          'react-dom': { singleton: true, requiredVersion: false, eager: true },
         },
       })
     );
 
     return config;
   },
-  reactStrictMode: true,
 };
 
 export default nextConfig;
-
